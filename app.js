@@ -31,6 +31,7 @@ request.addEventListener("readystatechange", () => {
   } else if (request.readyState == 4) {
     console.log("Error");
   } else {
+    console.log("loading...");
   }
 });
 
@@ -43,7 +44,9 @@ function updateUI(data) {
   ul.innerHTML = ""; // Clear the existing list items
 
   data.slice(0, 20).forEach((todo, i) => {
-    ul.innerHTML += `<li class="card">
+    ul.innerHTML += `<li class="card ${
+      todo.completed ? "active" : "inactive"
+    }" >
     <h3>ID: ${todo.id}</h3>
     <h4>Completed: ${todo.completed}</h4>
     <p>${todo.title}</p>
